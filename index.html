@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=de4vice-width, initial-scale=1.0" />
+    <title>basic calculator</title>
+  </head>
+  <body>
+    <form>
+        <input placeholder="4 + 2 * 6" type="text" id="expression">
+        <span>=</span>
+        <input placeholder="15" type="text" id="result" style="width: 100px">
+    </form>
+        <button onclick="calc()" style="margin-top: 10px">calculate</button>
+  </body>
+</html>
+<script>
+let expression = document.getElementById("expression")
+let result = document.getElementById("result")
+
+function calc() {
+  let arr = expression.value.split(" ")
+  console.log("Split is", arr)
+  if (!arr.length) {
+    return
+  }
+
+  let finalresult = Number(arr[0])
+  console.log("First element is", finalresult)
+
+  for (let i = 1; i < arr.length; i++) {
+  console.log("One more iteration begins", i)
+
+  switch (arr[i]) {
+    case "+": {
+      finalresult += Number(arr[i+1])
+      break;
+    }
+    case "-": {
+      finalresult -= Number(arr[i + 1])
+      break;
+    }    
+    case "*": {
+      finalresult *= Number(arr[i + 1])
+      break;
+    }
+    case "/": {
+      finalresult /= Number(arr[i + 1])
+      break;
+    }
+  }
+  }
+  result.value = finalresult
+}
+
+
+</script>
